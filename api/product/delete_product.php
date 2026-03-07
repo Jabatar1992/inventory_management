@@ -36,7 +36,7 @@ if (isset($_POST['product_id'])) {
             $productDetails = $result->fetch_assoc();
 
             // ======================
-            // DELETE PRODUCT
+            // DELETE PRODUCT 
             // ======================
 
             $deleteProduct = $connect->prepare("DELETE FROM products WHERE id = ?");

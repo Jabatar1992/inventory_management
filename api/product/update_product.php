@@ -80,5 +80,5 @@ if (isset($_POST['product_id'], $_POST['name'], $_POST['sku'], $_POST['price'], 
 } else {
     respondBadRequest("Invalid request. Required fields missing.");
 }
-
+//
 ?>
