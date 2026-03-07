@@ -5,11 +5,31 @@ $cache  = "no-cache";
 include "../head.php";
 
 // Check required POST parameters
-if (isset($_POST['product_id'], $_POST['quantity'], $_POST['user_id'])) {
+if (isset($_POST['product_id'], $_POST['quantity'])) {
 
     $product_id = cleanme(trim($_POST['product_id']));
     $quantity   = cleanme(trim($_POST['quantity']));
-    $user_id    = cleanme(trim($_POST['user_id']));
+   // $user_id    = cleanme(trim($_POST['user_id']));
+    
+$datasentin=ValidateAPITokenSentIN();
+$user_id=$datasentin->usertoken;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // ======================
     // VALIDATION SECTION
