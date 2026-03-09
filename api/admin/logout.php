@@ -4,33 +4,33 @@ $method="POST";
 $cache="no-cache";
 include "../head.php";
 
-if(isset($_POST['user_id'])){
+if(isset($_POST['admin_id'])){
 
-    $user_id = cleanme(trim($_POST['user_id']));
+    $admin_id = cleanme(trim($_POST['admin_id']));
 
     // validation
-    if(input_is_invalid($user_id)){
-        respondBadRequest("User ID is required");
-    }else if(!is_numeric($user_id)){ 
-        respondBadRequest("User ID must be numeric");
+    if(input_is_invalid($admin_id)){
+        respondBadRequest("admin ID is required");
+    }else if(!is_numeric($admin_id)){ 
+        respondBadRequest("admin ID must be numeric");
     }else{
 
-        // check if user exists
-        $checkUser = $connect->prepare("SELECT * FROM user WHERE id=?");
-        $checkUser->bind_param("i", $user_id);
-        $checkUser->execute();
-        $result = $checkUser->get_result();
+        // check if admin exists
+        $checkadmin = $connect->prepare("SELECT * FROM admin WHERE id=?");
+        $checkadmin->bind_param("i", $admin_id);
+        $checkadmin->execute();
+        $result = $checkadmin->get_result();
 
         if($result->num_rows > 0){
 
            
-    $accesstoken=getTokenToSendAPI($user_id);
+    $accesstoken=getTokenToSendAPI($admin_id);
 
     // Login successful
     respondOK( ['access_token'=>$accesstoken],"Logout successful.");
 
 } else {
-    respondBadRequest("Invalid request. User ID and password are required.");
+    respondBadRequest("Invalid request. admin ID and password are required.");
 }
 
     }
