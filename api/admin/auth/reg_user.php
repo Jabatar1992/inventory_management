@@ -2,7 +2,7 @@
 
 $method = "POST";
 $cache  = "no-cache";
-include "../head.php"; 
+include "../../head.php"; 
 
 if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 

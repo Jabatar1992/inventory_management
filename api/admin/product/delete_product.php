@@ -2,7 +2,7 @@
 
 $method = "POST"; // using POST method for deletion
 $cache = "no-cache";
-include "../head.php";
+include "../../head.php";
 
 if (isset($_POST['product_id'])) {
 

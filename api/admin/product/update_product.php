@@ -2,7 +2,7 @@
 
 $method = "POST";
 $cache  = "no-cache";
-include "../head.php";
+include "../../head.php";
 
 if (isset($_POST['product_id'], $_POST['name'], $_POST['sku'], $_POST['price'], $_POST['quantity'])) {
 

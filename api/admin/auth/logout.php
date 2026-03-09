@@ -2,7 +2,7 @@
 <?php
 $method="POST";
 $cache="no-cache";
-include "../head.php";
+include "../../head.php";
 
 if(isset($_POST['admin_id'])){
 

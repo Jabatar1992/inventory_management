@@ -1,7 +1,7 @@
 <?php
 $method="POST";
 $cache="no-cache";
-include "../head.php";
+include "../../head.php";
 
 // admin id and password
 if(isset($_POST['admin_id']) && isset($_POST['password'])){

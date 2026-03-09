@@ -2,7 +2,7 @@
 
 $method = "POST";
 $cache  = "no-cache";
-include "../head.php";
+include "../../head.php";
 
 // Check required POST parameters
 if (isset($_POST['product_id'], $_POST['quantity'])) {
