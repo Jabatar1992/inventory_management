@@ -12,9 +12,9 @@ if (isset($_POST['name'], $_POST['sku'], $_POST['price'], $_POST['quantity'])) {
     $price    = cleanme(trim($_POST['price']));
     $quantity = cleanme(trim($_POST['quantity']));
 
-    // ======================
+
     // VALIDATION SECTION
-    // ======================
+
 
     if (input_is_invalid($name) || input_is_invalid($sku) || input_is_invalid($price) || input_is_invalid($quantity)) {
         respondBadRequest("Name, SKU, Price and Quantity are required.");

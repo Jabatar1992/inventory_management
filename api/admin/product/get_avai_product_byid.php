@@ -4,17 +4,17 @@ $method = "GET";
 $cache  = "no-cache";
 include "../../head.php";
 
-// ======================
+
 // FETCH PRODUCT BY ID
-// ======================
+
 
 if (isset($_GET['product_id'])) {
 
     $product_id = cleanme(trim($_GET['product_id']));
 
-    // ======================
+    
     // VALIDATION
-    // ======================
+    
 
     if (input_is_invalid($product_id)) {
 
@@ -26,9 +26,9 @@ if (isset($_GET['product_id'])) {
 
     }
 
-    // ======================
+    
     // DATABASE QUERY
-    // ======================
+    
 
     $query = $connect->prepare("
         SELECT id, name, sku, category, price, quantity, created_at

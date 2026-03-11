@@ -15,9 +15,9 @@ if (isset($_POST['product_id'], $_POST['quantity'])) {
 
 
 
-    // ======================
+    
     // VALIDATION SECTION
-    // ======================
+    
 
     if (input_is_invalid($product_id) || input_is_invalid($quantity) || input_is_invalid($user_id)) {
         respondBadRequest("Product ID, Quantity, and User ID are required.");
@@ -33,9 +33,9 @@ if (isset($_POST['product_id'], $_POST['quantity'])) {
 
     } else {
 
-        // ======================
+        
         // CHECK IF PRODUCT EXISTS
-        // ======================
+        
 
         $checkProduct = $connect->prepare("SELECT id, quantity FROM products WHERE id = ?");
         $checkProduct->bind_param("i", $product_id);
@@ -48,29 +48,27 @@ if (isset($_POST['product_id'], $_POST['quantity'])) {
 
             $product = $productResult->fetch_assoc();
 
-            // ======================
+            
             // CHECK IF STOCK IS SUFFICIENT
-            // ======================
+            
 
             if ($quantity > $product['quantity']) {
                 respondBadRequest("Insufficient stock. Available quantity: " . $product['quantity']);
             } else {
                 $newQuantity = $product['quantity'] - $quantity;
 
-                // ======================
+            
                 // UPDATE PRODUCT QUANTITY
-                // ======================
-
+               
                 $updateProduct = $connect->prepare("UPDATE products SET quantity = ? WHERE id = ?");
                 $updateProduct->bind_param("ii", $newQuantity, $product_id);
                 $updateProduct->execute();
 
                 if ($updateProduct->affected_rows > 0) {
 
-                    // ======================
+                   
                     // INSERT INTO STOCK HISTORY
-                    // ======================
-
+                    
                     $insertStock = $connect->prepare("
                         INSERT INTO stock_history (product_id, change_type, quantity, user_id)
                         VALUES (?, 'remove', ?, ?)

@@ -4,9 +4,9 @@ $method = "GET";
 $cache  = "no-cache";
 include "../../head.php";
 
-// ======================
+
 // FETCH ALL PRODUCTS
-// ======================
+
 
 $query = $connect->prepare("
     SELECT id, name, sku, category, price, quantity, created_at

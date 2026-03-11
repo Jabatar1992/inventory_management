@@ -4,13 +4,13 @@ $method = "GET";
 $cache  = "no-cache";
 include "../head.php";
 
-// Optional filters: product_id, user_id
+
 $product_id = isset($_GET['product_id']) ? cleanme(trim($_GET['product_id'])) : null;
 $user_id    = isset($_GET['user_id']) ? cleanme(trim($_GET['user_id'])) : null;
 
-// ======================
+
 // BUILD QUERY
-// ======================
+
 $query = "SELECT sh.id, sh.product_id, p.name AS product_name, sh.change_type, sh.quantity, sh.user_id, u.name AS user_name, sh.created_at
           FROM stock_history sh
           INNER JOIN products p ON sh.product_id = p.id
@@ -42,9 +42,9 @@ if (!is_null($user_id)) {
 
 $query .= " ORDER BY sh.created_at DESC";
 
-// ======================
+
 // EXECUTE QUERY
-// ======================
+
 $stmt = $connect->prepare($query);
 
 if (!empty($params)) {

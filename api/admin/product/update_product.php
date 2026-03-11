@@ -13,9 +13,9 @@ if (isset($_POST['product_id'], $_POST['name'], $_POST['sku'], $_POST['price'], 
     $price      = cleanme(trim($_POST['price']));
     $quantity   = cleanme(trim($_POST['quantity']));
 
-    // ======================
+    
     // VALIDATION SECTION
-    // ======================
+    
 
     if (input_is_invalid($product_id) || input_is_invalid($name) || input_is_invalid($sku) || input_is_invalid($price) || input_is_invalid($quantity)) {
         respondBadRequest("Product ID, Name, SKU, Price, and Quantity are required.");
@@ -31,9 +31,9 @@ if (isset($_POST['product_id'], $_POST['name'], $_POST['sku'], $_POST['price'], 
 
     } else {
 
-        // ======================
+        
         // CHECK IF PRODUCT EXISTS
-        // ======================
+        
 
         $checkProduct = $connect->prepare("SELECT id FROM products WHERE id = ?");
         $checkProduct->bind_param("i", $product_id);
@@ -44,9 +44,9 @@ if (isset($_POST['product_id'], $_POST['name'], $_POST['sku'], $_POST['price'], 
             respondBadRequest("Product not found.");
         } else {
 
-            // ======================
+            
             // UPDATE PRODUCT
-            // ======================
+            
 
             $updateProduct = $connect->prepare("
                 UPDATE products

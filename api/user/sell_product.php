@@ -4,18 +4,17 @@ $method = "POST";
 $cache  = "no-cache";
 include "../head.php";
 
-// ======================
+
 // REDUCE PRODUCT STOCK AFTER SALE
-// ======================
 
 if (isset($_POST['product_id'], $_POST['quantity_sold'])) {
 
     $product_id     = cleanme(trim($_POST['product_id']));
     $quantity_sold  = cleanme(trim($_POST['quantity_sold']));
 
-    // ======================
+   
     // VALIDATION
-    // ======================
+    
 
     if (input_is_invalid($product_id) || input_is_invalid($quantity_sold)) {
 
@@ -27,9 +26,9 @@ if (isset($_POST['product_id'], $_POST['quantity_sold'])) {
 
     }
 
-    // ======================
+   
     // CHECK PRODUCT STOCK
-    // ======================
+    
 
     $check = $connect->prepare("
         SELECT quantity
@@ -48,19 +47,18 @@ if (isset($_POST['product_id'], $_POST['quantity_sold'])) {
     $product = $result->fetch_assoc();
     $current_stock = $product['quantity'];
 
-    // ======================
+   
     // CHECK IF STOCK IS ENOUGH
-    // ======================
-
+    
     if ($quantity_sold > $current_stock) {
 
         respondBadRequest("Not enough stock available.");
 
     }
 
-    // ======================
+    
     // REDUCE STOCK
-    // ======================
+   
 
     $new_stock = $current_stock - $quantity_sold;
 

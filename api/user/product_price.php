@@ -4,18 +4,17 @@ $method = "GET";
 $cache  = "no-cache";
 include "../head.php";
 
-// ======================
+
 // FETCH PRODUCT PRICE
-// ======================
+
 
 if (isset($_GET['product_id'])) {
 
     $product_id = cleanme(trim($_GET['product_id']));
 
-    // ======================
+    
     // VALIDATION
-    // ======================
-
+    
     if (input_is_invalid($product_id)) {
 
         respondBadRequest("Product ID is required.");
@@ -26,9 +25,9 @@ if (isset($_GET['product_id'])) {
 
     }
 
-    // ======================
+   
     // FETCH PRICE
-    // ======================
+    
 
     $query = $connect->prepare("
         SELECT name, sku, price

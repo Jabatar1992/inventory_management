@@ -11,9 +11,9 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $role     = isset($_POST['role']) ? cleanme(trim($_POST['role'])) : 'staff';
     $password = cleanme(trim($_POST['password']));
 
-    // ======================
+    
     // VALIDATION SECTION
-    // ======================
+    
 
     if (input_is_invalid($name) || input_is_invalid($email) || input_is_invalid($password)) {
         respondBadRequest("Name, Email and Password are required.");
@@ -38,9 +38,9 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
     } else {
 
-        // ======================
+        
         // CHECK IF EMAIL EXISTS
-        // ======================
+        
 
         $checkUser = $connect->prepare("SELECT id FROM user WHERE email = ?");
         $checkUser->bind_param("s", $email);
@@ -52,14 +52,14 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
         } else {
 
-            // ======================
+            
             // HASH PASSWORD
-            // ======================
+            
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            // ======================
+            
             // INSERT NEW USER
-            // ======================
+            
 
             $insertUser = $connect->prepare("
                 INSERT INTO user (name, email, role, password)
